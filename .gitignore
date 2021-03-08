@@ -3,3 +3,7 @@
 /src/node_modules/
 yarn-error.log
 /__sapper__/
+
+# ignore all the images rollup moves over, but keep site assets
+/static/images/*
+!/static/images/site-assets

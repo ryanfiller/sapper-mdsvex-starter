@@ -41,6 +41,8 @@
 	<title>{$$props.title}</title>
 </svelte:head>
 
-<h1>{$$props.title}</h1>
+{#if $$props.title}
+	<h1>{$$props.title}</h1>
+{/if}
 
 <slot />

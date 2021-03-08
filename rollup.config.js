@@ -1,15 +1,16 @@
 import path from 'path';
-import resolve from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
-import commonjs from '@rollup/plugin-commonjs';
-import dynamicImportVars from '@rollup/plugin-dynamic-import-vars'
-import url from '@rollup/plugin-url';
 import svelte from 'rollup-plugin-svelte';
-import babel from '@rollup/plugin-babel';
-import { terser } from 'rollup-plugin-terser';
+import { mdsvex } from 'mdsvex';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
-import { mdsvex } from 'mdsvex';
+import resolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
+import copy from 'rollup-plugin-copy'
+import dynamicImportVars from '@rollup/plugin-dynamic-import-vars'
+import url from '@rollup/plugin-url';
+import commonjs from '@rollup/plugin-commonjs';
+import { terser } from 'rollup-plugin-terser';
+import babel from '@rollup/plugin-babel';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -67,6 +68,13 @@ export default {
 			commonjs(),
 			dynamicImportVars(dynamicImportVarsOptions),
 
+			copy({
+				targets: [
+					// dunno why, but this breaks the server.js process if its `_images`
+					{ src: 'src/**/images/*.*', dest: 'static/images' }
+				]
+			}),
+
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
 				babelHelpers: 'runtime',
@@ -122,30 +130,36 @@ export default {
 			resolve({
 				dedupe: ['svelte']
 			}),
-			commonjs()
+			commonjs(),
+			dynamicImportVars(dynamicImportVarsOptions),
+			copy({
+				targets: [
+					{ src: 'src/**/_images/*.*', dest: 'static/images' }
+				]
+			})
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 		preserveEntrySignatures: 'strict',
 		onwarn,
 	},
 
-	// serviceworker: {
-	// 	input: config.serviceworker.input(),
-	// 	output: config.serviceworker.output(),
-	// 	plugins: [
-	// 		resolve(),
-	// 		replace({
-	// 			preventAssignment: true,
-	// 			values:{
-	// 				'process.browser': true,
-	// 				'process.env.NODE_ENV': JSON.stringify(mode)
-	// 			},
-	// 		}),
-	// 		commonjs(),
-	// 		dynamicImportVars(dynamicImportVarsOptions),
-	// 		!dev && terser()
-	// 	],
-	// 	preserveEntrySignatures: false,
-	// 	onwarn,
-	// }
+	serviceworker: {
+		input: config.serviceworker.input(),
+		output: config.serviceworker.output(),
+		plugins: [
+			resolve(),
+			replace({
+				preventAssignment: true,
+				values:{
+					'process.browser': true,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
+			}),
+			commonjs(),
+			dynamicImportVars(dynamicImportVarsOptions),
+			!dev && terser()
+		],
+		preserveEntrySignatures: false,
+		onwarn,
+	}
 };

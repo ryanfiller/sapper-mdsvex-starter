@@ -16,8 +16,6 @@ order: 60
 	let number = 45;
 </script>
 
-# { title }
-
 ## Good stuff in your markdown
 
 Markdown is pretty good but sometimes you just need more.
@@ -33,8 +31,8 @@ Not many people have a boinger right in their markdown.
 Sometimes what you wrote last week is so good that you just *have* to include it again.
 
 I'm not gonna stand in the way of your egomania.
->
-><Section />
+
+> <Section />
 > <Count />
 >
 >— *Me, May 2019*
@@ -69,4 +67,3 @@ And *this* and **THIS**. And other stuff. You can also use all your favorite Sve
 </ul>
 
 and all the other good Svelte stuff.
-
