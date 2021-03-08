@@ -1,3 +1,25 @@
+<script>
+	import PostNavigator from '../components/PostNavigator.svelte'
+
+	// Get the data that is stored in context in blog/[slug].svelte
+	import { getContext } from 'svelte'
+  const data = getContext('blog')
+
+	// We need to use reactive statement here to make sure this data is fresh on every page
+	// https://svelte.dev/tutorial/reactive-statements
+	let previous
+  let next
+
+  $: if (data) {
+		if (data.previous) {
+			previous = data.previous
+		}
+		if (data.next) {
+			next = data.next
+		}
+	}
+</script>
+
 <style>
 	/*
 		By default, CSS is locally scoped to the component,
@@ -41,8 +63,8 @@
 	<title>{$$props.title}</title>
 </svelte:head>
 
-{#if $$props.title}
-	<h1>{$$props.title}</h1>
-{/if}
+<h1>{$$props.title}</h1>
 
 <slot />
+
+<PostNavigator {previous} {next} />
