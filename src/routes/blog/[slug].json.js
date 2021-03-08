@@ -1,9 +1,9 @@
-import posts from './_posts.js';
+// import posts from './_posts.js';
 
 const lookup = new Map();
-posts.forEach(post => {
-	lookup.set(post.slug, JSON.stringify(post));
-});
+// posts.forEach(post => {
+// 	lookup.set(post.slug, JSON.stringify(post));
+// });
 
 export function get(req, res, next) {
 	// the `slug` parameter is available because
