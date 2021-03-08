@@ -19,10 +19,10 @@ const onwarn = (warning, onwarn) =>
 	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
 	onwarn(warning);
 
-const extensions = ['.svelte', '.svx'];
+const extensions = ['.svelte', '.md'];
 const preprocess = [
 	mdsvex({
-		extension: '.svx',
+		extension: '.md',
 	})
 ]
 

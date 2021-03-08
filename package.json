@@ -3,9 +3,9 @@
   "description": "a starter template for sapper using a non-traditional mdsvex data flow",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev --ext '.svelte .svx'",
-    "build": "sapper build --legacy --ext '.svelte .svx'",
-    "export": "sapper export --legacy --ext '.svelte .svx'",
+    "dev": "sapper dev --ext '.svelte .md'",
+    "build": "sapper build --legacy --ext '.svelte .md'",
+    "export": "sapper export --legacy --ext '.svelte .md'",
     "start": "node __sapper__/build"
   },
   "dependencies": {
