@@ -22,21 +22,18 @@ const directory = `src/routes/blog/_posts`
 // read each file
 const pages = {}
 fs.readdirSync(directory).map(file => {
-	// if a there is a [file].md or [file]/index.md...
+	// if a there is a [file]/index.md...
 	if (isDir(`${directory}/${file}`)) {
-		// get the index.md file
 		pages[file] = `${directory}/${file}/index.md`
-	} else {
-		pages[file] = `${directory}/${file}`
 	}
 })
 
 // create data from each file
 const data = Object.entries(pages).map(page => {
 
-	const [ key, value ] = page
+	const [ slug, path ] = page
 
-	const file = fs.readFileSync(value, 'utf-8')
+	const file = fs.readFileSync(path, 'utf-8')
 	let frontmatter
 	
 	// process using unified, can insert other plugins here
@@ -56,7 +53,7 @@ const data = Object.entries(pages).map(page => {
 
 	return ({
 		...frontmatter,
-		slug: key,
+		slug: slug,
 	})
 }).sort((a, b) => (a.order > b.order) ? 1 : -1)
 

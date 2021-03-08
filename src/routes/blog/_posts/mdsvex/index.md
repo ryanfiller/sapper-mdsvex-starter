@@ -8,10 +8,10 @@ order: 60
 ---
 
 <script>
-	import Boinger from '._components/Boinger.svelte';
-	import Section from '._components/Section.md';
-	import Count from '._components/Count.svelte';
-  import Seriously from '._components/Seriously.svelte';
+	import Boinger from './_components/Boinger.svelte';
+	import Section from './_components/Section.md';
+	import Count from './_components/Count.svelte';
+  import Seriously from './_components/Seriously.svelte';
 
 	let number = 45;
 </script>
