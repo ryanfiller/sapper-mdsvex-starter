@@ -2,6 +2,7 @@ import path from 'path';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
+import dynamicImportVars from '@rollup/plugin-dynamic-import-vars'
 import url from '@rollup/plugin-url';
 import svelte from 'rollup-plugin-svelte';
 import babel from '@rollup/plugin-babel';
@@ -23,8 +24,15 @@ const extensions = ['.svelte', '.md'];
 const preprocess = [
 	mdsvex({
 		extension: '.md',
+		layout: {
+			blog: 'src/layouts/blog.svelte'
+		},
 	})
 ]
+
+const dynamicImportVarsOptions = {
+	include: `src/routes/**/*.svelte`
+}
 
 export default {
 	client: {
@@ -55,6 +63,7 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
+			dynamicImportVars(dynamicImportVarsOptions),
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
@@ -131,6 +140,7 @@ export default {
 				},
 			}),
 			commonjs(),
+			dynamicImportVars(dynamicImportVarsOptions),
 			!dev && terser()
 		],
 		preserveEntrySignatures: false,
