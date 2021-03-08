@@ -11,7 +11,7 @@ A template for setting up a [Sapper](https://github.com/sveltejs/sapper) project
 To create a new Sapper project based on Rollup locally, run
 
 ```bash
-npx degit "ryanfiller/sapper-mdsvex-starter" my-app
+npx degit "ryanfiller/sapper-mdsvex-starter#main" my-app
 ```
 
 [`degit`](https://github.com/Rich-Harris/degit) is a scaffolding tool that lets you create a directory from a branch in a repository.
