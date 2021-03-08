@@ -31,7 +31,9 @@ const preprocess = [
 ]
 
 const dynamicImportVarsOptions = {
-	include: `src/routes/**/*.svelte`
+	include: [
+		`src/routes/**/*.svelte`
+	]
 }
 
 export default {
@@ -127,23 +129,23 @@ export default {
 		onwarn,
 	},
 
-	serviceworker: {
-		input: config.serviceworker.input(),
-		output: config.serviceworker.output(),
-		plugins: [
-			resolve(),
-			replace({
-				preventAssignment: true,
-				values:{
-					'process.browser': true,
-					'process.env.NODE_ENV': JSON.stringify(mode)
-				},
-			}),
-			commonjs(),
-			dynamicImportVars(dynamicImportVarsOptions),
-			!dev && terser()
-		],
-		preserveEntrySignatures: false,
-		onwarn,
-	}
+	// serviceworker: {
+	// 	input: config.serviceworker.input(),
+	// 	output: config.serviceworker.output(),
+	// 	plugins: [
+	// 		resolve(),
+	// 		replace({
+	// 			preventAssignment: true,
+	// 			values:{
+	// 				'process.browser': true,
+	// 				'process.env.NODE_ENV': JSON.stringify(mode)
+	// 			},
+	// 		}),
+	// 		commonjs(),
+	// 		dynamicImportVars(dynamicImportVarsOptions),
+	// 		!dev && terser()
+	// 	],
+	// 	preserveEntrySignatures: false,
+	// 	onwarn,
+	// }
 };
