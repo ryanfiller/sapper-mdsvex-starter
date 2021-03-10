@@ -132,4 +132,4 @@ If your project lives outside the WSL root directory, [this limitation](https://
 
 Sapper is in early development, and may have the odd rough edge here and there. Please be vocal over on the [Sapper issue tracker](https://github.com/sveltejs/sapper/issues).
 
-If there are issues with this template specifically, issues can be filed (here)[https://github.com/ryanfiller/sapper-mdsvex-starter/issues].
+If there are issues with this template specifically, issues can be filed [here](https://github.com/ryanfiller/sapper-mdsvex-starter/issues).
