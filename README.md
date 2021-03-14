@@ -93,7 +93,7 @@ Static files are served using [sirv](https://github.com/lukeed/sirv).
 
 ### static/images
 
-Files from `src/routes/blog/[slug]/_images` are copied into the `static/images` directory using [rollup-plugin-copy](https://www.npmjs.com/package/rollup-plugin-copy). The root of this directory is added to `.gitignore` so images aren't tracked twice, but inside of `static/images` there is a ``static/images/site-assets` directory that _will_ be tracked to git. Images copied with the same name will overwrite each other, so please be careful.
+Files from `src/routes/blog/[slug]/_images` are copied into the `static/images` directory using [rollup-plugin-copy](https://www.npmjs.com/package/rollup-plugin-copy). The root of this directory is added to `.gitignore` so images aren't tracked twice, but inside of `static/images` there is a `static/images/site-assets` directory that _will_ be tracked to git. Images copied with the same name will overwrite each other, so please be careful.
 
 ## Bundler configuration
 
