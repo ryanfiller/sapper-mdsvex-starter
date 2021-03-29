@@ -1,6 +1,6 @@
 # sapper-mdsvex-starter
 
-[Read about why I made this](https://www.ryanfiller.com/blog/assembling-the-perfect-svelte-data-flow/) | [See a live demo](https://ryanfiller-sapper-mdsvex-starter.netlify.app/)
+[Read about why I made this](https://www.ryanfiller.com/blog/building-a-better-svelte-data-flow/) | [See a live demo](https://ryanfiller-sapper-mdsvex-starter.netlify.app/)
 
 A template for setting up a [Sapper](https://github.com/sveltejs/sapper) project with [mdsvex](https://mdsvex.com/) using Rollup. This template is different than default [sapper-mdsvex-template](https://github.com/pngwn/sapper-mdsvex-template) in that it uses [dynamic module importing]([sapper-mdsvex-template](https://github.com/pngwn/sapper-mdsvex-template)) to combine [Sapper dyanmic pages](https://sapper.svelte.dev/docs#Pages) with [mdsvex templates](https://mdsvex.com/docs#layouts).
 
