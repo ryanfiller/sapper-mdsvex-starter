@@ -1,3 +1,5 @@
+# **This proejct is archived, yout might take some ideas from this tempalte but at this point you should most likely use [SvelteKit](https://kit.svelte.dev/) instead.**
+
 # sapper-mdsvex-starter
 
 [Read about why I made this](https://www.ryanfiller.com/blog/building-a-better-svelte-data-flow?sapper-mdsvex-starter) | [See a live demo](https://ryanfiller-sapper-mdsvex-starter.netlify.app/)
